@@ -59,11 +59,13 @@ body {
     &__title {
         margin-top: 4rem;
         color: $color-blue-grayish-dark;
+        margin-inline: auto;
     }
     &__text {
         color: $color-blue-grayish;
         margin-bottom: 3rem;
         line-height: 2.5ch;
+        margin-inline: auto;
     }
     &__btn-iOS {
         background-color: $color-cyan-strong;
@@ -110,13 +112,16 @@ body {
     &-four {
         @include section-padding($basic-padding: 3em 0 1em 0);
     }
+    &-five {
+    }
 }
 
 .blacklist-icon:before,
 .text-icon:before,
 .eye-icon:before {
     display: block;
-    padding-bottom: 2em;
+    padding-bottom: 2rem;
+    max-height: 3.5em;
 }
 .blacklist-icon:before {
     content: url(/images/icon-blacklist.svg);
@@ -182,10 +187,136 @@ body {
 .social-icon {
     width: 10%;
     display: inline-block;
-}
-.social-icon {
     margin-inline: 1rem;
 }
+
 .cursor {
     cursor: pointer;
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        grid-template: auto / 1fr 1440px 1fr;
+        background-image: url(/images/bg-header-desktop.png);
+        font-size: 1em;
+    }
+    .header__title {
+        max-width: 60%;
+    }
+    .header__text,
+    .main__text {
+        max-width: 90%;
+    }
+    .main {
+        display: grid;
+        grid-template: auto / repeat(5, 1fr);
+        overflow: hidden;
+    }
+
+    .image__monitor-sea-tick {
+        grid-area: 2/1/3/4;
+        position: relative;
+        left: -4.5em;
+    }
+
+    .section {
+        &-one {
+            grid-area: 1/2/2/5;
+            @include section-padding($basic-padding: 2em 0 3em 0);
+        }
+        &-two {
+            grid-area: 2 / 4 / 3 / 6;
+            text-align: left;
+        }
+        &-three {
+            @include section-padding($basic-padding: 7em 0 1em 0);
+            grid-area: 3 / 2 / 4/ 5;
+        }
+        &-four {
+            grid-area: 5 / 2 / 6 / 5;
+        }
+        &-five {
+            grid-area: 8 / 2 / 9 / 5;
+        }
+        &__item > h2 {
+            margin-inline: 1em;
+        }
+    }
+
+    .image__mobile-devices {
+        grid-area: 4 / 2 / 5 / 5;
+    }
+
+    .element {
+        display: flex;
+        flex-direction: column;
+
+        &__blacklists {
+            grid-area: 6 / 2;
+        }
+        &__snippets {
+            grid-area: 6 / 3;
+        }
+        &__preview {
+            grid-area: 6 / 4;
+        }
+    }
+
+    .gallery-logo {
+        grid-area: 7/1/8/6;
+        display: flex;
+        align-items: center;
+        gap: 5em;
+        padding-inline: 8em;
+    }
+
+    .button {
+        width: unset;
+    }
+
+    .button__wrapper {
+        display: flex;
+        align-items: baseline;
+        gap: 2em;
+        justify-content: center;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        &__list-item {
+            font-size: 0.8rem;
+            padding: 0;
+        }
+        &__list-item:hover {
+            color: $color-cyan-strong;
+        }
+        &__u-List {
+            display: grid;
+            grid-template: repeat(2, 0.25fr) / 1fr repeat(3, 0.75fr);
+            gap: 0 0.5em;
+            align-items: center;
+        }
+        &__logo {
+            grid-area: 1/1/3/2;
+            align-self: center;
+            margin-right: 5rem;
+        }
+        .social {
+            align-self: center;
+        }
+        .social-icon {
+            width: auto;
+        }
+        .social-icon path:hover {
+            fill: #26baa4;
+        }
+
+        .attribution {
+            width: 100%;
+            padding: 0 0 2em 0;
+        }
+    }
 }
